@@ -4,6 +4,7 @@ export const GetTodosFetch = createAsyncThunk('todos/FetchTodos',
     async function () {
         const response = await fetch('http://localhost:3000/todos')
         return await response.json()
+
     })
 
 export const AddTodoFetch = createAsyncThunk(
@@ -57,6 +58,7 @@ export const ChangeCompletedSubtaskFetch = createAsyncThunk(
                     } : subtask)
                 })
             })
+        thunkAPI.dispatch(changeSubtaskCompleted([arg.id, arg.subtask_id]))
     }
 )
 
