@@ -5,7 +5,7 @@ const SubtasksList = ({subtasks, todo_id}) => {
     return (
         <div className={'subtasks'}>
             {subtasks &&
-                subtasks.map((subtask) => <Subtask key={subtask.id} subtask={subtask} todo_id={todo_id}/>)
+                subtasks.map((subtask) => <Subtask key={subtask.id} subtask={subtask} subtasks={subtasks} todo_id={todo_id}/>)
             }
         </div>
     );

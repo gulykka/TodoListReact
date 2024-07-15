@@ -1,26 +1,23 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {
-    addSubtasks,
     AddSubtasksFetch,
-    ChangeCompletedTodoFetch, ChangeTodoDateFetch,
-    changeTodosCompleted,
-    changeTodosDate
+    ChangeCompletedTodoFetch,
+    ChangeTodoDateFetch,
 } from "../store/todos";
 import ButtonSecond from "../UI/ButtonSecond";
 import SubtasksList from "./SubtasksList";
 import dateCheck from "../tools/date";
 
 const Todo = ({todo}) => {
+    const dispatch = useDispatch()
     const [value, setValue] = useState(todo.completed)
     const [subtask, setSubtask] = useState('')
     const [wrong, setWrong] = useState('')
     const [date, setDate] = useState(todo.date)
-    const dispatch = useDispatch()
     let [change, setChange] = useState(false)
     let [add, setAdd] = useState(false)
     let [add_date, setAdd_date] = useState(false)
-
 
     function changeCompleted() {
         setValue(!value)
@@ -45,7 +42,6 @@ const Todo = ({todo}) => {
         setDate(todo.date)
         setWrong('')
         if (subtask !== '') {
-
             dispatch(AddSubtasksFetch({...todo, subtask}))
             console.log({...todo, subtask})
             setSubtask('')
@@ -55,9 +51,12 @@ const Todo = ({todo}) => {
 
     return (
         <div className={'todo_container'}>
-
             <div className={'todo'}>
-                <p className={value ? 'completed' : 'not_completed'} style={{fontWeight: '500'}}>{todo.title}</p>
+                <p
+                    className={value ? 'completed' : 'not_completed'}
+                    style={{fontWeight: '500'}}>
+                    {todo.title}
+                </p>
                 <div className={'todo_input'}>
                     {todo.date && !todo.completed &&
                         <div className={'date_container'}>

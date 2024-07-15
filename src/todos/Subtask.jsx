@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {ChangeCompletedSubtaskFetch, changeSubtaskCompleted} from "../store/todos";
 
-const Subtask = ({subtask, todo_id}) => {
+const Subtask = ({subtask, todo_id, subtasks}) => {
     const [completed, setCompleted] = useState(subtask.completed)
     const dispatch = useDispatch()
 
     function changeCompleted() {
-        dispatch(ChangeCompletedSubtaskFetch({id: todo_id, subtask: subtask.id}))
+        dispatch(ChangeCompletedSubtaskFetch({subtasks, id: todo_id, subtask_id: subtask.id}))
         setCompleted(!completed)
     }
     return (

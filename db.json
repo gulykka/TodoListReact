@@ -5,7 +5,7 @@
       "completed": false,
       "title": "quis ut nam facilis et officia qui",
       "id": "1",
-      "date": "2024-08-02",
+      "date": "2024-06-02",
       "subtasks": []
     },
     {
@@ -20,7 +20,7 @@
       "userId": 1,
       "id": "3",
       "title": "fugiat veniam minus",
-      "completed": false,
+      "completed": true,
       "date": "2024-08-24",
       "subtasks": []
     },
@@ -45,14 +45,41 @@
       "title": "lslslls",
       "completed": false,
       "date": "2024-08-03",
-      "subtasks": []
+      "subtasks": [
+        {
+          "id": "1721054906536",
+          "title": "dlldld",
+          "completed": true
+        },
+        {
+          "id": "1721054919113",
+          "title": "dkdkdkd",
+          "completed": true
+        }
+      ]
     },
     {
       "id": "1721054484935",
       "title": "good",
       "completed": false,
-      "date": "",
-      "subtasks": []
+      "date": "2024-08-02",
+      "subtasks": [
+        {
+          "id": "1721054937194",
+          "title": "sss",
+          "completed": true
+        },
+        {
+          "id": "1721054999804",
+          "title": "fllflf",
+          "completed": false
+        },
+        {
+          "id": "1721055880349",
+          "title": "ldldldl",
+          "completed": false
+        }
+      ]
     }
   ]
 }
