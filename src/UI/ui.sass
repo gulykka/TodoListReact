@@ -1,0 +1,30 @@
+%disabled
+  opacity: 0.7
+  cursor: not-allowed
+
+.button_1
+  background: darkslategray
+  color: white
+  padding: 10px
+  font-size: 15px
+  border: none
+  border-radius: 10px
+
+  &:disabled
+    @extend %disabled
+
+.button_2
+  padding: 10px
+  background: cadetblue
+  border: none
+  border-radius: 10px
+  cursor: pointer
+  transition: background 1s
+  align-self: center
+
+  &:hover
+    background: #7faeae
+
+  &:disabled
+    @extend %disabled
+
