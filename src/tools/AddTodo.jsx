@@ -24,7 +24,7 @@ const AddTodo = () => {
     }
 
     return (
-        <div className={'add'}>
+        <div className={'add_todo_form'}>
             <h3 style={{alignSelf:'center'}}>Add new todo!!!</h3>
             <input
                 value={title}

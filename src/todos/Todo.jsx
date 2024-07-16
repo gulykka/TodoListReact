@@ -43,7 +43,6 @@ const Todo = ({todo}) => {
         setWrong('')
         if (subtask !== '') {
             dispatch(AddSubtasksFetch({...todo, subtask}))
-            console.log({...todo, subtask})
             setSubtask('')
             setAdd(false)
         }
@@ -52,65 +51,68 @@ const Todo = ({todo}) => {
     return (
         <div className={'main_todo_container'}>
             <div className={'todo_container'}>
-                <div className={'todo'}>
-                    <div className={'todo_and_date'}>
-                        <p
-                            className={value ? 'completed' : 'not_completed'}
-                            style={{fontWeight: '500'}}>
-                            {todo.title}
-                        </p>
-                        {todo.date && !todo.completed &&
+                <div className={'todo container'}>
+                    <h2
+                        className={value ? 'completed' : 'not_completed'}>
+                        {todo.title}
+                    </h2>
+                    <input
+                        type="checkbox"
+                        checked={value}
+                        onChange={changeCompleted}
+                        className={'completed_check'}/>
+                </div>
+
+                {todo.subtasks.length !== 0 &&
+                    <div className={!value ? 'subtasks' : 'block_none'}>
+                        {!value && <SubtasksList subtasks={todo.subtasks} todo_id={todo.id}/>}
+                    </div>
+                }
+
+                <div className={!value ? 'todo_tools container' : 'block_none'}>
+                    <div className={'date'}>
+                        {todo.date &&
                             <div className={'date_container'}>
-                                <p>Done before </p>
+                                <span style={{width: '115px'}}>Done before </span>
                                 <input
                                     type="date"
                                     disabled={!change}
                                     onChange={e => setDate(e.target.value)}
                                     value={date}/>
-                                {!change && <ButtonSecond func={() => setChange(true)}>Change date</ButtonSecond>}
-                                {change && <ButtonSecond func={changeDate}>Change</ButtonSecond>}
-                                <p className={'wrong'}>{wrong}</p>
                             </div>}
-                    </div>
-
-                    <div className={'todo_input'}>
-
-                        {!add_date && !todo.completed && todo.date === '' &&
-                            <ButtonSecond func={() => setAdd_date(true)}>Add date</ButtonSecond>}
-                        {add_date && !todo.completed && todo.date === '' &&
-                            <div className={'add_date'}>
-                                <input
-                                    type="date"
-                                    onChange={e => setDate(e.target.value)}
-                                    value={date}/>
-                                <ButtonSecond func={changeDate}>Add</ButtonSecond>
-                            </div>}
-                        {!todo.completed &&
-                            !add && <ButtonSecond func={() => {
-                                setAdd(!add)
-                            }}>Add subtask</ButtonSecond>}
-                        {!todo.completed &&
-                            add && <ButtonSecond func={() => {
-                                setAdd(!add)
-                                setSubtask('')
-                            }}>Cancel</ButtonSecond>}
-                        {!todo.completed && add &&
+                        {todo.date === '' &&
                             <div className={'date_container'}>
-                                <input
-                                    value={subtask}
-                                    placeholder="Enter a subtask..."
-                                    onChange={e => setSubtask(e.target.value)}/>
-                                <ButtonSecond func={addSubtaskTodo} disabled={!subtask}>Add</ButtonSecond>
-                            </div>}
-                        <input
-                            type="checkbox"
-                            checked={value}
-                            onChange={changeCompleted}
-                            className={'completed_check'}/>
+                                {!add_date &&
+                                    <ButtonSecond func={() => setAdd_date(true)}>Add date</ButtonSecond>}
+                                {add_date &&
+                                    <div className={'add_date'}>
+                                        <input
+                                            type="date"
+                                            onChange={e => setDate(e.target.value)}
+                                            value={date}/>
+                                        <ButtonSecond func={changeDate}>Add</ButtonSecond>
+                                    </div>}
+                            </div>
+                        }
+                        <span className={'wrong'}>{wrong}</span>
                     </div>
-                </div>
+                        <div className={'subtask'}>
+                            {!todo.completed &&
+                                !add && <ButtonSecond func={() => {
+                                    setAdd(!add)
+                                }}>Add subtask</ButtonSecond>}
+                            {add &&
+                                <div className={'add_subtask'}>
+                                    <input
+                                        value={subtask}
+                                        placeholder="Enter a subtask..."
+                                        style={{width: '200px'}}
+                                        onChange={e => setSubtask(e.target.value)}/>
+                                    <ButtonSecond func={addSubtaskTodo} disabled={!subtask}>Add</ButtonSecond>
+                                </div>}
+                        </div>
 
-                {!value && <SubtasksList subtasks={todo.subtasks} todo_id={todo.id}/>}
+                </div>
             </div>
             <button className={'delete'} onClick={() => dispatch(DeleteTodoFetch({id: todo.id}))}>
                 Delete

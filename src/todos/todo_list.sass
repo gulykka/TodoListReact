@@ -1,75 +1,59 @@
-.container
+@mixin flex_container($gap: 20px)
+  display: flex
+  column-gap: $gap
+  align-items: center
+
+@mixin flex_container_column($gap: 20px)
   display: flex
   flex-direction: column
-  padding: 20px
-  row-gap: 10px
+  row-gap: $gap
 
-.todo
+$font_size_default: 20px
+
+.todos_container
+  padding: 20px
+  @include flex_container_column(10px)
+
+.main_todo_container
   display: flex
-  height: 60px
-  align-items: center
-  justify-content: space-between
-  font-size: 25px
 
 .todo_container
+  @include flex_container_column(10px)
   border: 2px darkslategray solid
   background: white
-  display: flex
-  //justify-content: center
-  flex-direction: column
   flex-grow: 1
   padding: 20px
 input
   height: 20px
-  font-size: 20px
+  font-size: $font_size_default
   padding: 2px
   &:disabled
     cursor: not-allowed
-.add
-  align-self: center
-  display: flex
-  flex-direction: column
-  row-gap: 20px
-  border: 2px darkslategray solid
-  background: white
-  padding: 20px
+
 .completed
   text-decoration: line-through
 
 .date_container
-  display: flex
-  column-gap: 15px
-  font-size: 20px
-.date
-  display: flex
-  column-gap: 5px
+  @include flex_container
+  font-size: $font_size_default
 
-.completed, .not_completed
-  max-width: 500px
-
-.completed_check
-  align-self: center
-
-.todo_input
+.container
   display: flex
-  column-gap: 30px
+  width: 100%
+  justify-content: space-between
 
-.add_date
-  display: flex
-  column-gap: 30px
+.block_none
+  display: none
+.add_date, .add_subtask
+  @include flex_container
 
 .subtasks
-  font-size: 20px
-  padding-left: 30px
-  width: 300px
+  padding-left: 10px
+  font-size: $font_size_default
 
 .subtask
-  display: flex
-  align-items: center
-  column-gap: 10px
+  @include flex_container(10px)
 
-.main_todo_container
-  display: flex
 .delete
   width: 50px
   border: 2px darkslategray solid
@@ -78,9 +62,12 @@ input
   &:hover
     width: 100px
 
-.todo_and_date
-  display: flex
-  flex-direction: column
+@media (max-width: 850px)
+  .todo_tools
+    flex-direction: column
+    align-items: flex-start
+    row-gap: 10px
 
-
-
+.wrong
+  color: #c72d2d
+  align-self: center

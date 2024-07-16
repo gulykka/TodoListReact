@@ -1,18 +1,12 @@
 import React from 'react';
+import AddTodo from "./AddTodo";
+import SortFunc from "./SortFunc";
 
 const Tools = () => {
     return (
-        <div className={'tools'}>
-            {/*<div className={'completed_todos'}>*/}
-            {/*    <div className={'container_'}>*/}
-            {/*        <label>Completed Todos</label>*/}
-            {/*        <input type="checkbox"/>*/}
-            {/*    </div>*/}
-            {/*    <div className={'container_'}>*/}
-            {/*        <label>Outstanding Todos</label>*/}
-            {/*        <input type="checkbox"/>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+        <div className={'navbar tools'}>
+            <AddTodo/>
+            <SortFunc/>
         </div>
     );
 };

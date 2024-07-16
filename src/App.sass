@@ -1,23 +1,24 @@
+.App, html, body, #root
+  height: 100%
 .App
   display: flex
   flex-direction: column
-  row-gap: 10px
-
 header
   background: cadetblue
   padding: 20px
   height: 50px
   display: flex
   justify-content: space-between
-.navbar
-  display: flex
-  flex-direction: column
-  //padding: 20px
-  //border: darkcyan 3px solid
+
 ::-webkit-scrollbar
   width: 0
 .body
-  margin-left: 200px
-  margin-right: 200px
+  margin: 20px 200px
+  flex-grow: 1
   background: rgba(77, 141, 141, 0.24)
-  padding-top: 20px
+@media (max-width: 1160px)
+  .body
+    margin: 20px
+footer
+  background: #4d8d8d
+  padding: 30px

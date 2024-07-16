@@ -7,12 +7,12 @@ const TodoList = () => {
     const posts_search = useSelector(state => state.todos.todos_search)
     const posts = useSelector(state => state.todos.todos)
     const search = useSelector(state => state.todos.search)
-    const todos = [...posts].reverse()
+    const todos = useSelector(state => state.todos.sort) ? posts : [...posts].reverse()
     const todos_search = [...posts_search].reverse()
 
 
     return (
-        <div className={'container'}>
+        <div className={'todos_container'}>
 
             {!search && todos.map((todo) => {
                 return (
