@@ -24,7 +24,7 @@ const TodoList = () => {
                     <Todo key={todo.id} todo={todo}/>
                 )
             })}
-            {search && !todos_search && <h1 style={{alignSelf: 'center'}}>nothing found</h1>}
+            {search && todos_search.length === 0  && <h1 style={{alignSelf: 'center'}}>nothing found</h1>}
         </div>
     );
 };

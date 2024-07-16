@@ -101,6 +101,16 @@ export const ChangeTodoDateFetch = createAsyncThunk(
     }
 )
 
+export const DeleteTodoFetch = createAsyncThunk(
+    'todos/DeleteTodoFetch',
+    async function(arg, thunkAPI) {
+        const response = await fetch(`http://localhost:3000/todos/${arg.id}`,{
+            method: "DELETE"
+        })
+        thunkAPI.dispatch(deleteTodo(arg.id))
+    }
+)
+
 export const TodosSlice = createSlice({
     name: 'todos',
     initialState: {
@@ -166,7 +176,12 @@ export const TodosSlice = createSlice({
         },
         clear: (state) => {
             state.search = false
+        },
+        deleteTodo: (state, action) => {
+            state.todos = state.todos.filter( todo => todo.id !== action.payload)
+            state.todos_search = state.todos_search.filter( todo => todo.id !== action.payload)
         }
+
     },
     extraReducers: (builder) => {
         builder
@@ -191,5 +206,6 @@ export const {
     changeSubtaskCompleted,
     findText,
     clear,
-    addTodoStore
+    addTodoStore,
+    deleteTodo
 } = TodosSlice.actions

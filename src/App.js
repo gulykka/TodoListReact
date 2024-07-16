@@ -21,12 +21,14 @@ function App() {
     return (
         <div className={'App'}>
             <Header/>
-            <div className={'navbar'}>
-                <AddTodo/>
-                <Tools/>
+            <div className={'body'}>
+                <div className={'navbar'}>
+                    <AddTodo/>
+                    <Tools/>
+                </div>
+                {!loading && <h1 style={{alignSelf:'center'}}>Loading...</h1>}
+                {loading && <TodoList/>}
             </div>
-            {!loading && <h1 style={{alignSelf:'center'}}>Loading...</h1>}
-            {loading && <TodoList/>}
 
         </div>
     )

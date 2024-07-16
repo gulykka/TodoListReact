@@ -6,20 +6,23 @@
 
 .todo
   display: flex
-  height: 40px
+  height: 60px
   align-items: center
   justify-content: space-between
   font-size: 25px
 
 .todo_container
   border: 2px darkslategray solid
+  background: white
   display: flex
+  //justify-content: center
   flex-direction: column
+  flex-grow: 1
   padding: 20px
 input
   height: 20px
   font-size: 20px
-  padding: 5px
+  padding: 2px
   &:disabled
     cursor: not-allowed
 .add
@@ -28,6 +31,7 @@ input
   flex-direction: column
   row-gap: 20px
   border: 2px darkslategray solid
+  background: white
   padding: 20px
 .completed
   text-decoration: line-through
@@ -35,13 +39,13 @@ input
 .date_container
   display: flex
   column-gap: 15px
+  font-size: 20px
 .date
   display: flex
   column-gap: 5px
 
 .completed, .not_completed
   max-width: 500px
-  //font-weight: 500
 
 .completed_check
   align-self: center
@@ -63,4 +67,20 @@ input
   display: flex
   align-items: center
   column-gap: 10px
+
+.main_todo_container
+  display: flex
+.delete
+  width: 50px
+  border: 2px darkslategray solid
+  background: #4d8d8d
+  transition: all 1s
+  &:hover
+    width: 100px
+
+.todo_and_date
+  display: flex
+  flex-direction: column
+
+
 
